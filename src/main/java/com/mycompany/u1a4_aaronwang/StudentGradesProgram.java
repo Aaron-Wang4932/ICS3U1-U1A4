@@ -27,37 +27,114 @@ public class StudentGradesProgram extends javax.swing.JFrame {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        label_title = new javax.swing.JLabel();
+        label_name = new javax.swing.JLabel();
+        label_test1 = new javax.swing.JLabel();
+        label_test2 = new javax.swing.JLabel();
+        label_test3 = new javax.swing.JLabel();
+        label_test4 = new javax.swing.JLabel();
+        entry_name = new javax.swing.JTextField();
+        entry_test1 = new javax.swing.JTextField();
+        entry_test2 = new javax.swing.JTextField();
+        entry_test3 = new javax.swing.JTextField();
+        entry_test4 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         background.setBackground(new java.awt.Color(235, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
-        jLabel1.setText("Student Grades Calculator");
+        label_title.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
+        label_title.setText("Student Grades Calculator");
+
+        label_name.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        label_name.setText("Student Name (separate with spaces):");
+
+        label_test1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        label_test1.setText("Test 1:");
+
+        label_test2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        label_test2.setText("Test 2:");
+
+        label_test3.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        label_test3.setText("Test 4:");
+
+        label_test4.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        label_test4.setText("Test 3:");
+
+        entry_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entry_nameActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setViewportView(jEditorPane1);
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
         backgroundLayout.setHorizontalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label_title, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133))
             .addGroup(backgroundLayout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addComponent(jLabel1)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_name)
+                    .addComponent(label_test1)
+                    .addComponent(label_test2)
+                    .addComponent(label_test4)
+                    .addComponent(label_test3))
+                .addGap(18, 18, 18)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(entry_test4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(entry_test3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(entry_test2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(entry_test1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(entry_name, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(75, 75, 75)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundLayout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 319, Short.MAX_VALUE))
+                .addComponent(label_title)
+                .addGap(27, 27, 27)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label_name)
+                            .addComponent(entry_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label_test1)
+                            .addComponent(entry_test1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label_test2)
+                            .addComponent(entry_test2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label_test4)
+                            .addComponent(entry_test3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label_test3)
+                            .addComponent(entry_test4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 78, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -67,6 +144,10 @@ public class StudentGradesProgram extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void entry_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entry_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_entry_nameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,6 +189,18 @@ public class StudentGradesProgram extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField entry_name;
+    private javax.swing.JTextField entry_test1;
+    private javax.swing.JTextField entry_test2;
+    private javax.swing.JTextField entry_test3;
+    private javax.swing.JTextField entry_test4;
+    private javax.swing.JEditorPane jEditorPane1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel label_name;
+    private javax.swing.JLabel label_test1;
+    private javax.swing.JLabel label_test2;
+    private javax.swing.JLabel label_test3;
+    private javax.swing.JLabel label_test4;
+    private javax.swing.JLabel label_title;
     // End of variables declaration//GEN-END:variables
 }
