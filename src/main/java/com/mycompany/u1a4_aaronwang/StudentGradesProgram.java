@@ -4,10 +4,8 @@
  */
 package com.mycompany.u1a4_aaronwang;
 
-/**
- *
- * @author Aaron Wang
- */
+import java.util.Arrays;
+
 public class StudentGradesProgram extends javax.swing.JFrame {
     String[][] studentInfo = new String[30][6];
     int currentStudent = 0;
@@ -46,12 +44,11 @@ public class StudentGradesProgram extends javax.swing.JFrame {
         errorBox = new javax.swing.JTextArea();
         listStudentBTN = new javax.swing.JButton();
         addStudentBTN = new javax.swing.JButton();
-        BTN_separator = new javax.swing.JSeparator();
         studentAvgBTN = new javax.swing.JButton();
         courseAvgBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Student Grades Calc");
+        setTitle("Student Grades Calculator");
         setResizable(false);
 
         background.setBackground(new java.awt.Color(235, 255, 255));
@@ -60,23 +57,23 @@ public class StudentGradesProgram extends javax.swing.JFrame {
         label_title.setForeground(new java.awt.Color(0, 0, 0));
         label_title.setText("Student Grades Calculator");
 
-        label_name.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        label_name.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         label_name.setForeground(new java.awt.Color(0, 0, 0));
-        label_name.setText("Student Name (separate with spaces):");
+        label_name.setText("Student Name:");
 
-        label_grade1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        label_grade1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         label_grade1.setForeground(new java.awt.Color(0, 0, 0));
         label_grade1.setText("Grade 1:");
 
-        label_grade2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        label_grade2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         label_grade2.setForeground(new java.awt.Color(0, 0, 0));
         label_grade2.setText("Grade 2:");
 
-        label_grade3.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        label_grade3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         label_grade3.setForeground(new java.awt.Color(0, 0, 0));
         label_grade3.setText("Grade 4:");
 
-        label_grade4.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        label_grade4.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         label_grade4.setForeground(new java.awt.Color(0, 0, 0));
         label_grade4.setText("Grade 3:");
 
@@ -105,10 +102,11 @@ public class StudentGradesProgram extends javax.swing.JFrame {
         outputBox.setColumns(20);
         outputBox.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         outputBox.setForeground(new java.awt.Color(0, 0, 0));
+        outputBox.setLineWrap(true);
         outputBox.setRows(5);
         outputBox.setTabSize(1);
         outputBox.setText("Abaaslfkm, Bob:\n\t1. 56%\n\t2. 67%\n\t3. 29%\n\t4. 98%");
-        outputBox.setText("Abaaslfkm, Bob:\n  1. 56%\n  2. 67%\n  3. 29%\n  4. 98%");
+        outputBox.setWrapStyleWord(true);
         outputBox.setFocusable(false);
         jScrollPane2.setViewportView(outputBox);
 
@@ -117,14 +115,17 @@ public class StudentGradesProgram extends javax.swing.JFrame {
         errorBox.setEditable(false);
         errorBox.setBackground(new java.awt.Color(255, 255, 255));
         errorBox.setColumns(20);
-        errorBox.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        errorBox.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         errorBox.setForeground(new java.awt.Color(255, 0, 62));
-        errorBox.setRows(5);
+        errorBox.setLineWrap(true);
+        errorBox.setRows(1);
         errorBox.setText("aaaaaaa");
+        errorBox.setWrapStyleWord(true);
         errorBox.setFocusable(false);
         jScrollPane1.setViewportView(errorBox);
 
         listStudentBTN.setBackground(new java.awt.Color(255, 255, 255));
+        listStudentBTN.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         listStudentBTN.setForeground(new java.awt.Color(0, 0, 0));
         listStudentBTN.setText("Class List");
         listStudentBTN.setFocusable(false);
@@ -135,6 +136,7 @@ public class StudentGradesProgram extends javax.swing.JFrame {
         });
 
         addStudentBTN.setBackground(new java.awt.Color(255, 255, 255));
+        addStudentBTN.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         addStudentBTN.setForeground(new java.awt.Color(0, 0, 0));
         addStudentBTN.setText("Add Info");
         addStudentBTN.setFocusable(false);
@@ -144,10 +146,8 @@ public class StudentGradesProgram extends javax.swing.JFrame {
             }
         });
 
-        BTN_separator.setBackground(new java.awt.Color(0, 0, 0));
-        BTN_separator.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
         studentAvgBTN.setBackground(new java.awt.Color(255, 255, 255));
+        studentAvgBTN.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         studentAvgBTN.setForeground(new java.awt.Color(0, 0, 0));
         studentAvgBTN.setText("Student Avg.");
         studentAvgBTN.setFocusable(false);
@@ -158,6 +158,7 @@ public class StudentGradesProgram extends javax.swing.JFrame {
         });
 
         courseAvgBTN.setBackground(new java.awt.Color(255, 255, 255));
+        courseAvgBTN.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         courseAvgBTN.setForeground(new java.awt.Color(0, 0, 0));
         courseAvgBTN.setText("Course Avg.");
         courseAvgBTN.setFocusable(false);
@@ -175,47 +176,46 @@ public class StudentGradesProgram extends javax.swing.JFrame {
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(backgroundLayout.createSequentialGroup()
-                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(backgroundLayout.createSequentialGroup()
-                                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(label_name)
-                                            .addComponent(label_grade1)
-                                            .addComponent(label_grade2)
-                                            .addComponent(label_grade4)
-                                            .addComponent(label_grade3))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(entry_grade4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(entry_grade3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(entry_grade2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(entry_grade1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(entry_name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(addStudentBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(listStudentBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(backgroundLayout.createSequentialGroup()
+                                .addComponent(label_name)
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(entry_name, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(backgroundLayout.createSequentialGroup()
-                                .addComponent(addStudentBTN)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(listStudentBTN)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BTN_separator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(studentAvgBTN)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(courseAvgBTN))))
+                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_grade1)
+                                    .addComponent(label_grade2)
+                                    .addComponent(label_grade4)
+                                    .addComponent(label_grade3))
+                                .addGap(59, 59, 59)
+                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(entry_grade2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(entry_grade1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(entry_grade3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(entry_grade4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(backgroundLayout.createSequentialGroup()
+                                .addComponent(studentAvgBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(courseAvgBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(backgroundLayout.createSequentialGroup()
-                        .addGap(72, 72, 72)
+                        .addGap(18, 18, 18)
                         .addComponent(label_title, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(label_title)
-                .addGap(21, 21, 21)
+                .addGap(9, 9, 9)
+                .addComponent(label_title, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundLayout.createSequentialGroup()
                         .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -238,26 +238,22 @@ public class StudentGradesProgram extends javax.swing.JFrame {
                             .addComponent(label_grade3)
                             .addComponent(entry_grade4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addStudentBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(listStudentBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(BTN_separator))
-                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(studentAvgBTN)
-                        .addComponent(courseAvgBTN)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addStudentBTN)
+                    .addComponent(listStudentBTN)
+                    .addComponent(studentAvgBTN)
+                    .addComponent(courseAvgBTN))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +269,58 @@ public class StudentGradesProgram extends javax.swing.JFrame {
     }//GEN-LAST:event_entry_nameActionPerformed
 
     private void addStudentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentBTNActionPerformed
-        // TODO add your handling code here:
+        // Declarations
+        String[] potentialName = entry_name.getText().trim().split("\\s+");
+        double grade1, grade2, grade3, grade4;
+        
+        errorBox.setText("");
+       
+        // If classlist is 30 (full), return out.
+        if(currentStudent == 30) {
+            errorBox.setText("Your classlist is full!");
+            return;
+        }
+        
+        // If there is no first and last name, return out.
+        if(potentialName.length < 2) {
+            errorBox.setText("Please enter a first and last name separated by spaces!");
+            return;
+        }
+        
+        // Iterate through studentInfo and check the first and second element against their respective elements in potentialName
+        // If both match, there is a duplicate student; return out.
+        for(int i = 0; i < studentInfo.length; i++) {
+            if(potentialName[0].equalsIgnoreCase(studentInfo[i][0]) && potentialName[1].equalsIgnoreCase(studentInfo[i][1])) {
+                errorBox.setText("That student already exists!");
+                return;
+            }
+        }
+        
+        // Check if entered grades are valid. If caught, return out.
+        try{
+            grade1 = Double.parseDouble(entry_grade1.getText());
+            grade2 = Double.parseDouble(entry_grade2.getText());
+            grade3 = Double.parseDouble(entry_grade3.getText());
+            grade4 = Double.parseDouble(entry_grade4.getText());
+        } catch (NumberFormatException nfe) {
+            errorBox.setText("Please valid grade input!");
+            return;
+        }
+        
+        // Sets studentInfo; at this point in the code, all entries are valid entries.
+        studentInfo[currentStudent][0] = potentialName[0];
+        studentInfo[currentStudent][1] = potentialName[1];
+        studentInfo[currentStudent][2] = grade1 + "";
+        studentInfo[currentStudent][3] = grade2 + "";
+        studentInfo[currentStudent][4] = grade3 + "";
+        studentInfo[currentStudent][5] = grade4 + "";
+        
+        
+        outputBox.setText(Arrays.toString(studentInfo[currentStudent]));
+        errorBox.setForeground(new java.awt.Color(0, 0, 0));
+        errorBox.setText("Student " + studentInfo[currentStudent][0] + " " + studentInfo[currentStudent][1] + " has been entered.");
+        errorBox.setForeground(new java.awt.Color(255, 0, 62));
+        currentStudent++;
     }//GEN-LAST:event_addStudentBTNActionPerformed
 
     private void listStudentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listStudentBTNActionPerformed
@@ -327,7 +374,6 @@ public class StudentGradesProgram extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSeparator BTN_separator;
     private javax.swing.JButton addStudentBTN;
     private javax.swing.JPanel background;
     private javax.swing.JButton courseAvgBTN;
