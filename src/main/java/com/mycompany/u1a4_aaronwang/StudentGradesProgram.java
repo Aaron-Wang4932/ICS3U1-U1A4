@@ -4,8 +4,6 @@
  */
 package com.mycompany.u1a4_aaronwang;
 
-import java.util.Arrays;
-
 public class StudentGradesProgram extends javax.swing.JFrame {
     String[][] studentInfo = new String[30][6];
     int currentStudent = 0;
@@ -247,20 +245,16 @@ public class StudentGradesProgram extends javax.swing.JFrame {
     private String capitalize(String s) {
         return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
     }
-    
     private void clearInput() {
         entry_name.setText("");
         entry_grade1.setText("");
         entry_grade2.setText("");
         entry_grade3.setText("");
-        entry_grade4.setText("");
-        
+        entry_grade4.setText("");    
     }
-    
     private String[] grabName (javax.swing.JTextField textbox) {
         return textbox.getText().trim().split("\\s+");
     }
-    
     private void addStudentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentBTNActionPerformed
         // Declarations
         String[] potentialName = grabName(entry_name);
@@ -310,9 +304,6 @@ public class StudentGradesProgram extends javax.swing.JFrame {
         
         // Clears all entry boxes.
         clearInput();
-        
-        
-        outputBox.setText(Arrays.toString(studentInfo[currentStudent]));
         errorBox.setText("Student " + studentInfo[currentStudent][0] + " " + studentInfo[currentStudent][1] + " has been entered.");
         currentStudent++;
     }//GEN-LAST:event_addStudentBTNActionPerformed
@@ -363,7 +354,9 @@ public class StudentGradesProgram extends javax.swing.JFrame {
                         Double.parseDouble(studentInfo[i][5]) )
                         / 4.0
                         * 100 ) 
-                        / 100.0; 
+                        / 100.0;
+                
+                break;
             }
         }
         
