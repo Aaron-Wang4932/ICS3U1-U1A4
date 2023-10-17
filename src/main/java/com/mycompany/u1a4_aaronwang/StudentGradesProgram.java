@@ -108,6 +108,7 @@ public class StudentGradesProgram extends javax.swing.JFrame {
         outputBox.setRows(5);
         outputBox.setTabSize(1);
         outputBox.setText("Abaaslfkm, Bob:\n\t1. 56%\n\t2. 67%\n\t3. 29%\n\t4. 98%");
+        outputBox.setText("Abaaslfkm, Bob:\n  1. 56%\n  2. 67%\n  3. 29%\n  4. 98%");
         outputBox.setFocusable(false);
         jScrollPane2.setViewportView(outputBox);
 
