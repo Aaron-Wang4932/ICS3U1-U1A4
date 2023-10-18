@@ -193,8 +193,8 @@
         </Component>
         <Component class="javax.swing.JTextField" name="entry_name">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="12" style="0"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" preCode="&#xa;">
+              <Connection code="new java.awt.Font(&quot;Comic Sans MS&quot;, 0, 12)" type="code"/>
             </Property>
           </Properties>
           <Events>
@@ -266,7 +266,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="errorBox">
+            <Component class="javax.swing.JTextArea" name="notifyBox">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

@@ -6,7 +6,7 @@ package com.mycompany.u1a4_aaronwang;
 
 public class StudentGradesProgram extends javax.swing.JFrame {
     String[][] studentInfo = new String[30][6];
-    int currentStudent = 0;
+    int curStudent = 0;
 
     /*
      * Creates new form StudentGradesProgram
@@ -39,7 +39,7 @@ public class StudentGradesProgram extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         outputBox = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
-        errorBox = new javax.swing.JTextArea();
+        notifyBox = new javax.swing.JTextArea();
         listStudentBTN = new javax.swing.JButton();
         addStudentBTN = new javax.swing.JButton();
         studentAvgBTN = new javax.swing.JButton();
@@ -98,16 +98,16 @@ public class StudentGradesProgram extends javax.swing.JFrame {
 
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        errorBox.setEditable(false);
-        errorBox.setBackground(new java.awt.Color(255, 255, 255));
-        errorBox.setColumns(20);
-        errorBox.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        errorBox.setForeground(new java.awt.Color(255, 0, 62));
-        errorBox.setLineWrap(true);
-        errorBox.setRows(1);
-        errorBox.setWrapStyleWord(true);
-        errorBox.setFocusable(false);
-        jScrollPane1.setViewportView(errorBox);
+        notifyBox.setEditable(false);
+        notifyBox.setBackground(new java.awt.Color(255, 255, 255));
+        notifyBox.setColumns(20);
+        notifyBox.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        notifyBox.setForeground(new java.awt.Color(255, 0, 62));
+        notifyBox.setLineWrap(true);
+        notifyBox.setRows(1);
+        notifyBox.setWrapStyleWord(true);
+        notifyBox.setFocusable(false);
+        jScrollPane1.setViewportView(notifyBox);
 
         listStudentBTN.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         listStudentBTN.setText("Class List");
@@ -256,29 +256,29 @@ public class StudentGradesProgram extends javax.swing.JFrame {
         return textbox.getText().trim().split("\\s+");
     }
     private void addStudentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentBTNActionPerformed
+        notifyBox.setText("");
+        
         // Declarations
         String[] potentialName = grabName(entry_name);
         double grade1, grade2, grade3, grade4;
         
-        errorBox.setText("");
-       
         // If classlist is 30 (full), return out.
-        if(currentStudent == 30) {
-            errorBox.setText("Your classlist is full!");
+        if(curStudent == 30) {
+            notifyBox.setText("Your classlist is full!");
             return;
         }
         
         // If there is no first and last name, return out.
         if(potentialName.length < 2) {
-            errorBox.setText("Please enter a first and last name separated by spaces!");
+            notifyBox.setText("Please enter a first and last name separated by spaces!");
             return;
         }
         
         // Iterate through studentInfo and check the first and second element against their respective elements in potentialName
         // If both match, there is a duplicate student; return out.
-        for(int i = 0; i < studentInfo.length; i++) {
-            if(potentialName[0].equalsIgnoreCase(studentInfo[i][0]) && potentialName[1].equalsIgnoreCase(studentInfo[i][1])) {
-                errorBox.setText("That student already exists!");
+        for(String[] array : studentInfo) {
+            if(potentialName[0].equalsIgnoreCase(array[0]) && potentialName[1].equalsIgnoreCase(array[1])) {
+                notifyBox.setText("That student already exists!");
                 return;
             }
         }
@@ -290,68 +290,71 @@ public class StudentGradesProgram extends javax.swing.JFrame {
             grade3 = Double.parseDouble(entry_grade3.getText());
             grade4 = Double.parseDouble(entry_grade4.getText());
         } catch (NumberFormatException nfe) {
-            errorBox.setText("Please valid grade input!");
+            notifyBox.setText("Please valid grade input!");
             return;
         }
         
         // Sets studentInfo; at this point in the code, all entries are valid entries.
-        studentInfo[currentStudent][0] = capitalize(potentialName[0]);
-        studentInfo[currentStudent][1] = capitalize(potentialName[1]);
-        studentInfo[currentStudent][2] = grade1 + "";
-        studentInfo[currentStudent][3] = grade2 + "";
-        studentInfo[currentStudent][4] = grade3 + "";
-        studentInfo[currentStudent][5] = grade4 + "";
+        studentInfo[curStudent][0] = capitalize(potentialName[0]);
+        studentInfo[curStudent][1] = capitalize(potentialName[1]);
+        studentInfo[curStudent][2] = grade1 + "";
+        studentInfo[curStudent][3] = grade2 + "";
+        studentInfo[curStudent][4] = grade3 + "";
+        studentInfo[curStudent][5] = grade4 + "";
         
         // Clears all entry boxes.
         clearInput();
-        errorBox.setText("Student " + studentInfo[currentStudent][0] + " " + studentInfo[currentStudent][1] + " has been entered.");
-        currentStudent++;
+        notifyBox.setText("Student " + studentInfo[curStudent][0] + " " + studentInfo[curStudent][1] + " has been entered.");
+        curStudent++;
     }//GEN-LAST:event_addStudentBTNActionPerformed
 
     private void listStudentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listStudentBTNActionPerformed
-        String output = "";
-        errorBox.setText("");
-        
-        if(currentStudent == 0) {
-            errorBox.setText("You have no registered students!");
+        notifyBox.setText("");
+        String output = "", fixPlural = "s";
+ 
+        // If classlist empty, return.
+        if(curStudent == 0) {
+            notifyBox.setText("You have no registered students!");
             return;
+        } else if(curStudent == 1) {
+            fixPlural = "";
         }
         
-        for(int i = 0; i < currentStudent; i++) {
+        // Iterate through and add student info to output.
+        for(int i = 0; i < curStudent; i++) {
             output += studentInfo[i][0] + " " + studentInfo[i][1] + "\n\t1: " + studentInfo[i][2]+ "%\n\t2: " + studentInfo[i][3]+ "%\n\t3: " + studentInfo[i][4]+ "%\n\t4: " + studentInfo[i][5] + "%\n";
         }
         outputBox.setText(output);
-        errorBox.setText("You have " + currentStudent + " students in your class.");
+        notifyBox.setText("You have " + curStudent + " student" + fixPlural + " in your class.");
     }//GEN-LAST:event_listStudentBTNActionPerformed
 
     private void studentAvgBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentAvgBTNActionPerformed
+        notifyBox.setText("");
+
         // Initialization.
         boolean isInArray = false;
-        int indexOfSelected = 0;
         double average = 0;
-        
+        String firstName = "", lastName = "";
         // Grabs user entry and splits it into a potential name of a student
         String[] potentialName = grabName(entry_name);
         
-        errorBox.setText("");
-        
         // Check if a valid name has been entered.
         if(potentialName.length < 2) {
-            errorBox.setText("Please enter a first and last name separated by spaces!");
+            notifyBox.setText("Please enter a first and last name separated by spaces!");
             return;
         }
         
         // Determine if entered student is in the 2D array.
-        for(int i = 0; i < currentStudent; i++) {
-            if(studentInfo[i][0].equalsIgnoreCase(potentialName[0]) && studentInfo[i][1].equalsIgnoreCase(potentialName[1])) {
-                
+        for(String[] array : studentInfo) {
+            if(array[0].equalsIgnoreCase(potentialName[0]) && array[1].equalsIgnoreCase(potentialName[1])) {
                 isInArray = true;
-                indexOfSelected = i;
+                firstName = potentialName[0]; 
+                lastName = potentialName[1];
                 average = Math.round((
-                        Double.parseDouble(studentInfo[i][2]) + 
-                        Double.parseDouble(studentInfo[i][3]) +
-                        Double.parseDouble(studentInfo[i][4]) + 
-                        Double.parseDouble(studentInfo[i][5]) )
+                        Double.parseDouble(array[2]) + 
+                        Double.parseDouble(array[3]) +
+                        Double.parseDouble(array[4]) + 
+                        Double.parseDouble(array[5]) )
                         / 4.0
                         * 100 ) 
                         / 100.0;
@@ -360,35 +363,35 @@ public class StudentGradesProgram extends javax.swing.JFrame {
             }
         }
         
+        // If the student is not in array, return.
         if(!isInArray) {
-            errorBox.setText("The student " + capitalize(potentialName[0]) + "  " + capitalize(potentialName[1]) + " was not found!");
+            notifyBox.setText("The student " + capitalize(potentialName[0]) + "  " + capitalize(potentialName[1]) + " was not found!");
             return;
         }
         
-        outputBox.setText("The average grade of student " + studentInfo[indexOfSelected][0] + " " + studentInfo[indexOfSelected][1] + " is " + average + "%.");
-        
+        outputBox.setText("The average grade of " + firstName + " " + lastName + " is " + average + "%.");
         clearInput();
         
     }//GEN-LAST:event_studentAvgBTNActionPerformed
 
     private void courseAvgBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseAvgBTNActionPerformed
         double courseAvg = 0;
-        errorBox.setText("");
+        notifyBox.setText("");
         
         // Check if array is empty.
-        if(currentStudent == 0) {
-            errorBox.setText("You have no registered students!");
+        if(curStudent == 0) {
+            notifyBox.setText("You have no registered students!");
             return;
         }
         
-        for(int i = 0; i < currentStudent; i++) {
+        for(int i = 0; i < curStudent; i++) {
             courseAvg += Double.parseDouble(studentInfo[i][2]) + 
                          Double.parseDouble(studentInfo[i][3]) + 
                          Double.parseDouble(studentInfo[i][4]) + 
                          Double.parseDouble(studentInfo[i][5]);
         }
         
-        courseAvg = Math.round((courseAvg / (currentStudent * 4)) * 100) / 100.0;
+        courseAvg = Math.round((courseAvg / (curStudent * 4)) * 100) / 100.0;
         
         outputBox.setText("The course average for this class is " + courseAvg + "%.");
     }//GEN-LAST:event_courseAvgBTNActionPerformed
@@ -440,7 +443,6 @@ public class StudentGradesProgram extends javax.swing.JFrame {
     private javax.swing.JTextField entry_grade3;
     private javax.swing.JTextField entry_grade4;
     private javax.swing.JTextField entry_name;
-    private javax.swing.JTextArea errorBox;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel label_grade1;
@@ -450,6 +452,7 @@ public class StudentGradesProgram extends javax.swing.JFrame {
     private javax.swing.JLabel label_name;
     private javax.swing.JLabel label_title;
     private javax.swing.JButton listStudentBTN;
+    private javax.swing.JTextArea notifyBox;
     private javax.swing.JTextArea outputBox;
     private javax.swing.JButton studentAvgBTN;
     // End of variables declaration//GEN-END:variables
