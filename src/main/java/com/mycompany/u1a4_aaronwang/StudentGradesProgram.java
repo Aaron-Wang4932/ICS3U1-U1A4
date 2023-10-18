@@ -262,6 +262,11 @@ public class StudentGradesProgram extends javax.swing.JFrame {
         String[] potentialName = grabName(entry_name);
         double grade1, grade2, grade3, grade4;
         
+        // If all boxes are unfilled, return.
+        if(entry_name.getText().trim().equals("") && entry_grade1.getText().trim().equals("") && entry_grade2.getText().trim().equals("") && entry_grade3.getText().trim().equals("") && entry_grade4.getText().trim().equals("")) {
+            notifyBox.setText("Please fill out the fields!");
+            return;
+        }
         // If classlist is 30 (full), return out.
         if(curStudent == 30) {
             notifyBox.setText("Your classlist is full!");
@@ -289,8 +294,13 @@ public class StudentGradesProgram extends javax.swing.JFrame {
             grade2 = Double.parseDouble(entry_grade2.getText());
             grade3 = Double.parseDouble(entry_grade3.getText());
             grade4 = Double.parseDouble(entry_grade4.getText());
+            
+            if(grade1 < 0 || grade1 > 100 || grade2 < 0 || grade2 > 100 || grade3 < 0 || grade3 > 100 || grade4 < 0 || grade4 > 100) {
+                notifyBox.setText("Grades can only be in between 0 and 100%!");
+                return;
+            }
         } catch (NumberFormatException nfe) {
-            notifyBox.setText("Please valid grade input!");
+            notifyBox.setText("Please enter valid grade input!");
             return;
         }
         
